@@ -1,4 +1,5 @@
 ﻿using Lista_de_Chamadas.Classes;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,22 +18,40 @@ namespace Lista_de_Chamadas
         {
             InitializeComponent();
         }
-        BindingList<Aluno> alunos;
-        private void FormLista_Load(object sender, EventArgs e)
-        {
-            alunos = new BindingList<Aluno>();
-            dgvListaChamada.DataSource = alunos;
-        }
-
         private void BtnFecharTudo_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void BtnMinimar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+
+        BindingList<Aluno> alunos;
+        ListaChamada chamada;
+        private void FormLista_Load(object sender, EventArgs e)
+        {
+            alunos = new BindingList<Aluno>();
+            dgvListaChamada.DataSource = alunos;
+            chamada = new ListaChamada()
+            {
+                Id = new ObjectId(),
+                ListaRA = new List<ulong>(),
+            };
+
+            try
+            {
+                ModuloBanco.ListaChamadaAdd(chamada);
+            }
+            catch
+            {
+                MessageBox.Show("Aconteceu um erro no banco de dados!!");
+                Application.Exit();
+            }
+        }
+
+
 
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
