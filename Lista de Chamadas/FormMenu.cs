@@ -26,5 +26,15 @@ namespace Lista_de_Chamadas
         {
             new FormLista().ShowDialog();
         }
+
+        private void BtnMinimar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void BtnFecharTudo_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

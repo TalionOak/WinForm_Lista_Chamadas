@@ -33,14 +33,14 @@
             this.btnFecharTudo = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtRa = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.txtNomeLista = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvListaChamada = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtDataCriacao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaChamada)).BeginInit();
@@ -69,6 +69,7 @@
             this.btnMinimar.TabStop = false;
             this.btnMinimar.Text = "_";
             this.btnMinimar.UseVisualStyleBackColor = false;
+            this.btnMinimar.Click += new System.EventHandler(this.BtnMinimar_Click);
             // 
             // btnFecharTudo
             // 
@@ -82,6 +83,7 @@
             this.btnFecharTudo.TabStop = false;
             this.btnFecharTudo.Text = "X";
             this.btnFecharTudo.UseVisualStyleBackColor = false;
+            this.btnFecharTudo.Click += new System.EventHandler(this.BtnFecharTudo_Click);
             // 
             // pictureBox1
             // 
@@ -102,19 +104,21 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "R.A";
             // 
-            // textBox1
+            // txtRa
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 98);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtRa.Location = new System.Drawing.Point(16, 98);
+            this.txtRa.Name = "txtRa";
+            this.txtRa.Size = new System.Drawing.Size(100, 20);
+            this.txtRa.TabIndex = 1;
+            this.txtRa.Text = " ";
+            this.txtRa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRa_KeyPress);
             // 
-            // textBox2
+            // txtNome
             // 
-            this.textBox2.Location = new System.Drawing.Point(122, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(264, 20);
-            this.textBox2.TabIndex = 11;
+            this.txtNome.Location = new System.Drawing.Point(122, 98);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(264, 20);
+            this.txtNome.TabIndex = 2;
             // 
             // label3
             // 
@@ -125,23 +129,25 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Nome";
             // 
-            // button1
+            // btnAdicionar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(403, 95);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Adicionar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.Location = new System.Drawing.Point(403, 95);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.btnAdicionar.TabIndex = 3;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
             // 
-            // textBox3
+            // txtNomeLista
             // 
-            this.textBox3.Location = new System.Drawing.Point(16, 59);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 14;
+            this.txtNomeLista.Location = new System.Drawing.Point(16, 59);
+            this.txtNomeLista.Name = "txtNomeLista";
+            this.txtNomeLista.Size = new System.Drawing.Size(200, 20);
+            this.txtNomeLista.TabIndex = 14;
+            this.txtNomeLista.TabStop = false;
             // 
             // label4
             // 
@@ -154,19 +160,35 @@
             // 
             // dgvListaChamada
             // 
+            this.dgvListaChamada.AllowUserToAddRows = false;
+            this.dgvListaChamada.AllowUserToOrderColumns = true;
+            this.dgvListaChamada.AllowUserToResizeColumns = false;
+            this.dgvListaChamada.AllowUserToResizeRows = false;
             this.dgvListaChamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaChamada.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvListaChamada.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvListaChamada.Location = new System.Drawing.Point(0, 124);
+            this.dgvListaChamada.MultiSelect = false;
             this.dgvListaChamada.Name = "dgvListaChamada";
+            this.dgvListaChamada.ReadOnly = true;
+            this.dgvListaChamada.RowHeadersVisible = false;
+            this.dgvListaChamada.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvListaChamada.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaChamada.ShowCellErrors = false;
+            this.dgvListaChamada.ShowCellToolTips = false;
+            this.dgvListaChamada.ShowEditingIcon = false;
+            this.dgvListaChamada.ShowRowErrors = false;
             this.dgvListaChamada.Size = new System.Drawing.Size(555, 245);
             this.dgvListaChamada.TabIndex = 15;
+            this.dgvListaChamada.TabStop = false;
             // 
-            // textBox4
+            // txtDataCriacao
             // 
-            this.textBox4.Location = new System.Drawing.Point(222, 59);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(86, 20);
-            this.textBox4.TabIndex = 17;
+            this.txtDataCriacao.Location = new System.Drawing.Point(222, 59);
+            this.txtDataCriacao.Name = "txtDataCriacao";
+            this.txtDataCriacao.Size = new System.Drawing.Size(86, 20);
+            this.txtDataCriacao.TabIndex = 17;
+            this.txtDataCriacao.TabStop = false;
             // 
             // label5
             // 
@@ -183,15 +205,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(555, 369);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtDataCriacao);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvListaChamada);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtNomeLista);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtRa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMinimar);
@@ -217,14 +239,14 @@
         private System.Windows.Forms.Button btnFecharTudo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRa;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.TextBox txtNomeLista;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvListaChamada;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtDataCriacao;
         private System.Windows.Forms.Label label5;
     }
 }

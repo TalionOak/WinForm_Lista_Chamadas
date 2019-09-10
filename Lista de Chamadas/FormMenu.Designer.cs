@@ -63,6 +63,7 @@
             this.btnFecharTudo.TabStop = false;
             this.btnFecharTudo.Text = "X";
             this.btnFecharTudo.UseVisualStyleBackColor = false;
+            this.btnFecharTudo.Click += new System.EventHandler(this.BtnFecharTudo_Click);
             // 
             // btnMinimar
             // 
@@ -76,6 +77,7 @@
             this.btnMinimar.TabStop = false;
             this.btnMinimar.Text = "_";
             this.btnMinimar.UseVisualStyleBackColor = false;
+            this.btnMinimar.Click += new System.EventHandler(this.BtnMinimar_Click);
             // 
             // label1
             // 
