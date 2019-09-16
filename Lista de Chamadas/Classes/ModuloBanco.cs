@@ -33,8 +33,19 @@ namespace Lista_de_Chamadas.Classes
         public static Aluno AlunoGet(ulong ra)
             => AlunoColecao.Find(x => x.RA == ra).FirstOrDefault();
 
-        public static void AlunoEdit(ulong ra)
-            => AlunoColecao.ReplaceOne(x => x.RA == ra, AlunoGet(ra));
+        public static void AlunoEdit(ulong ra, Aluno aluno)
+            => AlunoColecao.ReplaceOne(x => x.RA == ra, aluno);
+
+        public static void AlunoAdd(Aluno aluno)
+        {
+            Aluno tem = AlunoGet(aluno.RA);
+            if (tem != null)
+            {
+                AlunoEdit(aluno.RA, aluno);
+                return;
+            }
+            AlunoColecao.InsertOne(aluno);
+        }
 
         #endregion
 
@@ -43,8 +54,8 @@ namespace Lista_de_Chamadas.Classes
         public static ListaChamada ListaChamadaGet(ObjectId id)
             => ListaChamadaColecao.Find(x => x.Id == id).FirstOrDefault();
 
-        public static void ListaChamadaEdit(ObjectId id)
-            => ListaChamadaColecao.ReplaceOne(x => x.Id == id, ListaChamadaGet(id));
+        public static void ListaChamadaEdit(ObjectId id, ListaChamada lista)
+            => ListaChamadaColecao.ReplaceOne(x => x.Id == id, lista);
 
         public static void ListaChamadaAdd(ListaChamada lista)
             => ListaChamadaColecao.InsertOne(lista);

@@ -42,6 +42,7 @@
             this.dgvListaChamada = new System.Windows.Forms.DataGridView();
             this.txtDataCriacao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnCriar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaChamada)).BeginInit();
             this.SuspendLayout();
@@ -94,6 +95,9 @@
             this.pictureBox1.Size = new System.Drawing.Size(555, 28);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
             // 
             // label2
             // 
@@ -108,17 +112,20 @@
             // 
             this.txtRa.Location = new System.Drawing.Point(16, 98);
             this.txtRa.Name = "txtRa";
+            this.txtRa.ReadOnly = true;
             this.txtRa.Size = new System.Drawing.Size(100, 20);
-            this.txtRa.TabIndex = 1;
+            this.txtRa.TabIndex = 4;
             this.txtRa.Text = " ";
             this.txtRa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRa_KeyPress);
+            this.txtRa.Leave += new System.EventHandler(this.TxtRa_Leave);
             // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(122, 98);
             this.txtNome.Name = "txtNome";
+            this.txtNome.ReadOnly = true;
             this.txtNome.Size = new System.Drawing.Size(264, 20);
-            this.txtNome.TabIndex = 2;
+            this.txtNome.TabIndex = 5;
             // 
             // label3
             // 
@@ -136,9 +143,10 @@
             this.btnAdicionar.Location = new System.Drawing.Point(403, 95);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
-            this.btnAdicionar.TabIndex = 3;
+            this.btnAdicionar.TabIndex = 6;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Visible = false;
             this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
             // 
             // txtNomeLista
@@ -146,7 +154,7 @@
             this.txtNomeLista.Location = new System.Drawing.Point(16, 59);
             this.txtNomeLista.Name = "txtNomeLista";
             this.txtNomeLista.Size = new System.Drawing.Size(200, 20);
-            this.txtNomeLista.TabIndex = 14;
+            this.txtNomeLista.TabIndex = 1;
             this.txtNomeLista.TabStop = false;
             // 
             // label4
@@ -161,9 +169,10 @@
             // dgvListaChamada
             // 
             this.dgvListaChamada.AllowUserToAddRows = false;
-            this.dgvListaChamada.AllowUserToOrderColumns = true;
+            this.dgvListaChamada.AllowUserToDeleteRows = false;
             this.dgvListaChamada.AllowUserToResizeColumns = false;
             this.dgvListaChamada.AllowUserToResizeRows = false;
+            this.dgvListaChamada.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvListaChamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaChamada.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvListaChamada.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -181,13 +190,15 @@
             this.dgvListaChamada.Size = new System.Drawing.Size(555, 245);
             this.dgvListaChamada.TabIndex = 15;
             this.dgvListaChamada.TabStop = false;
+            this.dgvListaChamada.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvListaChamada_KeyDown);
             // 
             // txtDataCriacao
             // 
             this.txtDataCriacao.Location = new System.Drawing.Point(222, 59);
             this.txtDataCriacao.Name = "txtDataCriacao";
+            this.txtDataCriacao.ReadOnly = true;
             this.txtDataCriacao.Size = new System.Drawing.Size(86, 20);
-            this.txtDataCriacao.TabIndex = 17;
+            this.txtDataCriacao.TabIndex = 2;
             this.txtDataCriacao.TabStop = false;
             // 
             // label5
@@ -199,12 +210,26 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Data criação lista";
             // 
+            // btnCriar
+            // 
+            this.btnCriar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCriar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCriar.Location = new System.Drawing.Point(314, 56);
+            this.btnCriar.Name = "btnCriar";
+            this.btnCriar.Size = new System.Drawing.Size(75, 23);
+            this.btnCriar.TabIndex = 3;
+            this.btnCriar.TabStop = false;
+            this.btnCriar.Text = "Criar";
+            this.btnCriar.UseVisualStyleBackColor = false;
+            this.btnCriar.Click += new System.EventHandler(this.BtnCriar_Click);
+            // 
             // FormLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(555, 369);
+            this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.txtDataCriacao);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvListaChamada);
@@ -248,5 +273,6 @@
         private System.Windows.Forms.DataGridView dgvListaChamada;
         private System.Windows.Forms.TextBox txtDataCriacao;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnCriar;
     }
 }

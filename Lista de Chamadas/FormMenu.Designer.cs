@@ -50,6 +50,9 @@
             this.pictureBox1.Size = new System.Drawing.Size(555, 28);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
             // 
             // btnFecharTudo
             // 
@@ -146,6 +149,7 @@
             this.btnCalcular.TabIndex = 5;
             this.btnCalcular.Text = "Calcular horas";
             this.btnCalcular.UseVisualStyleBackColor = false;
+            this.btnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
             // 
             // FormMenu
             // 

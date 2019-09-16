@@ -12,6 +12,7 @@ namespace Lista_de_Chamadas.Classes
     {
         [BsonId]
         public ObjectId Id { get; set; }
+        public DateTime DataCriacao { get; set; }
         public string NomeLista { get; set; }
         public List<ulong> ListaRA { get; set; }
     }
