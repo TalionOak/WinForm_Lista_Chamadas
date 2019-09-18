@@ -35,6 +35,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'k|AnyCPU'">
     <OutputPath>bin\k\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ff|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ff\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Crc32C.NET, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Crc32C.NET.1.0.5.0\lib\net20\Crc32C.NET.dll</HintPath>
@@ -80,6 +90,8 @@
   <ItemGroup>
     <Compile Include="Classes\Aluno.cs" />
     <Compile Include="Classes\ListaChamada.cs" />
+    <Compile Include="Classes\ListaHoras.cs" />
+    <Compile Include="Classes\ListaParaEditar.cs" />
     <Compile Include="Classes\ModuloBanco.cs" />
     <Compile Include="FormCalcularHoras.cs">
       <SubType>Form</SubType>
@@ -99,6 +111,12 @@
     <Compile Include="FormLista.Designer.cs">
       <DependentUpon>FormLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTodasAsListas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTodasAsListas.Designer.cs">
+      <DependentUpon>FormTodasAsListas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCalcularHoras.resx">
@@ -109,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLista.resx">
       <DependentUpon>FormLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTodasAsListas.resx">
+      <DependentUpon>FormTodasAsListas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

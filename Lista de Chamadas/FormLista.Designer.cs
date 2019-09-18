@@ -77,7 +77,7 @@
             this.btnFecharTudo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFecharTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFecharTudo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnFecharTudo.Location = new System.Drawing.Point(533, 3);
+            this.btnFecharTudo.Location = new System.Drawing.Point(531, 3);
             this.btnFecharTudo.Name = "btnFecharTudo";
             this.btnFecharTudo.Size = new System.Drawing.Size(21, 23);
             this.btnFecharTudo.TabIndex = 5;
@@ -116,6 +116,7 @@
             this.txtRa.Size = new System.Drawing.Size(100, 20);
             this.txtRa.TabIndex = 4;
             this.txtRa.Text = " ";
+            this.txtRa.Enter += new System.EventHandler(this.TxtRa_Enter);
             this.txtRa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRa_KeyPress);
             this.txtRa.Leave += new System.EventHandler(this.TxtRa_Leave);
             // 
@@ -155,7 +156,6 @@
             this.txtNomeLista.Name = "txtNomeLista";
             this.txtNomeLista.Size = new System.Drawing.Size(200, 20);
             this.txtNomeLista.TabIndex = 1;
-            this.txtNomeLista.TabStop = false;
             // 
             // label4
             // 

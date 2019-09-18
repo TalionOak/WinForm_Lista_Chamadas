@@ -31,7 +31,8 @@ namespace Lista_de_Chamadas.Classes
         #region CRUD Aluno
 
         public static Aluno AlunoGet(ulong ra)
-            => AlunoColecao.Find(x => x.RA == ra).FirstOrDefault();
+          => AlunoColecao.Find(x => x.RA == ra).FirstOrDefault();
+
 
         public static void AlunoEdit(ulong ra, Aluno aluno)
             => AlunoColecao.ReplaceOne(x => x.RA == ra, aluno);
@@ -59,6 +60,9 @@ namespace Lista_de_Chamadas.Classes
 
         public static void ListaChamadaAdd(ListaChamada lista)
             => ListaChamadaColecao.InsertOne(lista);
+
+        public static void ListaChamadaDel(ObjectId id)
+            => ListaChamadaColecao.DeleteOne(x => x.Id == id);
 
         #endregion
 

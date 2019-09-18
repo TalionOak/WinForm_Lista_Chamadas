@@ -15,9 +15,11 @@ namespace Lista_de_Chamadas
     public partial class FormLista : Form
     {
         bool Editar = false;
-        public FormLista(bool editar)
+        ObjectId Id;
+        public FormLista(bool editar, ObjectId FF = new ObjectId())
         {
             Editar = editar;
+            Id = FF;
             InitializeComponent();
         }
 
@@ -27,6 +29,16 @@ namespace Lista_de_Chamadas
         {
             if (Editar)
             {
+
+                _ListaChamada = ModuloBanco.ListaChamadaGet(Id);
+                txtDataCriacao.Text = _ListaChamada.DataCriacao.ToString();
+                _Alunos = new BindingList<Aluno>();
+                foreach (var item in _ListaChamada.ListaRA)
+                {
+                    _Alunos.Add(ModuloBanco.AlunoGet(item));
+                }
+                dgvListaChamada.DataSource = _Alunos;
+                txtNomeLista.Focus();
             }
             else
             {
@@ -58,6 +70,7 @@ namespace Lista_de_Chamadas
             txtRa.ReadOnly = false;
             txtNome.ReadOnly = false;
             btnAdicionar.Visible = true;
+            txtNomeLista.TabStop = false;
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
@@ -180,14 +193,31 @@ namespace Lista_de_Chamadas
             }
         }
 
+
         private void TxtRa_Leave(object sender, EventArgs e)
         {
-            Aluno aluno = ModuloBanco.AlunoGet(Convert.ToUInt32(txtRa.Text));
-            if (aluno != null)
+
+            ulong.TryParse(txtRa.Text, out ulong ra);
+            if (ra == 0)
             {
-                txtNome.Text = aluno.Nome;
-                btnAdicionar.Focus();
+                return;
             }
+            else
+            {
+                this.UseWaitCursor = true;
+                Aluno aluno = ModuloBanco.AlunoGet(ra);
+                if (aluno != null)
+                {
+                    txtNome.Text = aluno.Nome;
+                    btnAdicionar.Focus();
+                }
+                this.UseWaitCursor = false;
+            }
+        }
+
+        private void TxtRa_Enter(object sender, EventArgs e)
+        {
+            txtRa.Clear();
         }
     }
 }

@@ -66,5 +66,10 @@ namespace Lista_de_Chamadas
         {
             new FormCalcularHoras().ShowDialog();
         }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            new FormTodasAsListas().ShowDialog();
+        }
     }
 }

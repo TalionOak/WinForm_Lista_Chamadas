@@ -28,23 +28,83 @@ namespace Lista_de_Chamadas
         {
             var min = mc.SelectionStart;
             var max = mc.SelectionEnd;
-            List<ListaChamada> searchResult = await ModuloBanco.ListaChamadaColecao.Find(
+            double.TryParse(txtHoras.Text, out double horas);
+            this.UseWaitCursor = true;
+            List<ListaChamada> ListaResultadoPesquisa = await ModuloBanco.ListaChamadaColecao.Find(
                         x => x.DataCriacao >= min &&
                         x.DataCriacao <= max
                         ).ToListAsync();
-            dgvListaChamada.DataSource = searchResult;
 
-            //var now = DateTime.UtcNow;
-            //var currentDate = now.Date;
-            //var tomorrow = currentDate.AddDays(1);
-            //var left = currentDate.ToUnixTimeSeconds();
-            //var right = tomorrow.ToUnixTimeSeconds();
+            Dictionary<ulong, ListaHoras> listahoras = new Dictionary<ulong, ListaHoras>();
+            foreach (var listas in ListaResultadoPesquisa)
+            {
+                foreach (var alunoRA in listas.ListaRA)
+                {
+                    listahoras.TryGetValue(alunoRA, out ListaHoras listaPresensa);
+                    var alunoNome = ModuloBanco.AlunoGet(alunoRA);
+                    if (listaPresensa != null)
+                    {
+                        listaPresensa.Horas += horas;
+                        listaPresensa.NomeAluno = alunoNome.Nome;
+                        listaPresensa.RA = alunoRA;
+                    }
+                    else
+                    {
+                        ListaHoras alu = new ListaHoras();
+                        alu.Horas = horas;
+                        alu.NomeAluno = alunoNome.Nome;
+                        alu.RA = alunoRA;
+                        listahoras.Add(alunoRA, alu);
+                    }
+                }
+            }
+            dgvListaChamada.DataSource = listahoras.Values.ToList();
+            this.UseWaitCursor = false;
+        }
 
-            //var results = await Settings.DataBase.GetCollection<Video>("Videos")
-            //        .Find(x => x.ViewsToday != null &&
-            //              x.ViewsToday.Date >= left &&
-            //              x.ViewsToday.Date < right)
-            //            .ToListAsync();
+        private void BtnFecharTudo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnMinimar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+
+        #region Arrastando Form
+        Point ArrastarCursor;
+        Point ArrastarForm;
+        bool Arrastando;
+        private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            Arrastando = false;
+        }
+
+        private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Arrastando = true;
+            ArrastarCursor = Cursor.Position;
+            ArrastarForm = this.Location;
+        }
+
+        private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Arrastando)
+            {
+                Point diferenca = Point.Subtract(Cursor.Position, new Size(ArrastarCursor));
+                this.Location = Point.Add(ArrastarForm, new Size(diferenca));
+            }
+        }
+        #endregion
+
+        private void TxtHoras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
