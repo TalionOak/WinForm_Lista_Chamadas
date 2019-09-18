@@ -47,7 +47,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label1.Location = new System.Drawing.Point(12, 4);
+            this.label1.Location = new System.Drawing.Point(14, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 17);
             this.label1.TabIndex = 11;
@@ -58,7 +58,7 @@
             this.btnMinimar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnMinimar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnMinimar.Location = new System.Drawing.Point(568, 2);
+            this.btnMinimar.Location = new System.Drawing.Point(570, 3);
             this.btnMinimar.Name = "btnMinimar";
             this.btnMinimar.Size = new System.Drawing.Size(21, 23);
             this.btnMinimar.TabIndex = 10;
@@ -72,7 +72,7 @@
             this.btnFecharTudo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFecharTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFecharTudo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnFecharTudo.Location = new System.Drawing.Point(593, 2);
+            this.btnFecharTudo.Location = new System.Drawing.Point(594, 3);
             this.btnFecharTudo.Name = "btnFecharTudo";
             this.btnFecharTudo.Size = new System.Drawing.Size(21, 23);
             this.btnFecharTudo.TabIndex = 9;

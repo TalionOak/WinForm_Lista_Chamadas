@@ -46,7 +46,9 @@ namespace Lista_de_Chamadas
         #endregion
         private void FormTodasAsListas_Load(object sender, EventArgs e)
         {
-
+            List<ListaParaEditar> list = new List<ListaParaEditar>();
+            dgvListaChamada.DataSource = list;
+            dgvListaChamada.Columns[0].Visible = false;
         }
 
         private async void Mc_MouseUpAsync(object sender, MouseEventArgs e)
@@ -70,7 +72,6 @@ namespace Lista_de_Chamadas
                 list.Add(l);
             }
             dgvListaChamada.DataSource = list;
-            dgvListaChamada.Columns[0].Visible = false;
             this.UseWaitCursor = false;
         }
 
@@ -84,7 +85,7 @@ namespace Lista_de_Chamadas
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void BtnExcluir_Click(object sender, EventArgs e)
+        private async void BtnExcluir_ClickAsync(object sender, EventArgs e)
         {
             if (dgvListaChamada.CurrentRow != null && dgvListaChamada.Rows.Count > 0)
             {
@@ -93,7 +94,29 @@ namespace Lista_de_Chamadas
                 {
                     ObjectId id = (ObjectId)dgvListaChamada.Rows[selectedIndex].Cells[0].Value;
                     if (MessageBox.Show("Você tem certeza que deseja deletar esta lista de chamada?", "Deletando lista...", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
                         ModuloBanco.ListaChamadaDel(id);
+                        var min = mc.SelectionStart;
+                        var max = mc.SelectionEnd;
+                        this.UseWaitCursor = true;
+                        List<ListaChamada> ListaResultadoPesquisa = await ModuloBanco.ListaChamadaColecao.Find(
+                                    x => x.DataCriacao >= min &&
+                                    x.DataCriacao <= max
+                                    ).ToListAsync();
+
+                        List<ListaParaEditar> list = new List<ListaParaEditar>();
+                        foreach (var listas in ListaResultadoPesquisa)
+                        {
+                            ListaParaEditar l = new ListaParaEditar();
+                            l.Id = listas.Id;
+                            l.Alunos = listas.ListaRA.Count;
+                            l.Dia = listas.DataCriacao;
+                            l.Nome = listas.NomeLista;
+                            list.Add(l);
+                        }
+                        dgvListaChamada.DataSource = list;
+                        this.UseWaitCursor = false;
+                    }
                     else
                         return;
                 }

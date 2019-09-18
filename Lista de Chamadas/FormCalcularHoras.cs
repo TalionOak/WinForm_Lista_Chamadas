@@ -21,7 +21,8 @@ namespace Lista_de_Chamadas
 
         private void FormCalcularHoras_Load(object sender, EventArgs e)
         {
-
+            List<ListaHoras> fg = new List<ListaHoras>();
+            dgvListaChamada.DataSource = fg;
         }
 
         private async void BtnCalcular_ClickAsync(object sender, EventArgs e)

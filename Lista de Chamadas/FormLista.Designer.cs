@@ -42,7 +42,9 @@
             this.dgvListaChamada = new System.Windows.Forms.DataGridView();
             this.txtDataCriacao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnRemover = new System.Windows.Forms.Button();
             this.btnCriar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaChamada)).BeginInit();
             this.SuspendLayout();
@@ -143,7 +145,7 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Location = new System.Drawing.Point(403, 95);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.btnAdicionar.Size = new System.Drawing.Size(69, 23);
             this.btnAdicionar.TabIndex = 6;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
@@ -172,6 +174,8 @@
             this.dgvListaChamada.AllowUserToDeleteRows = false;
             this.dgvListaChamada.AllowUserToResizeColumns = false;
             this.dgvListaChamada.AllowUserToResizeRows = false;
+            this.dgvListaChamada.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvListaChamada.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvListaChamada.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvListaChamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaChamada.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -197,7 +201,7 @@
             this.txtDataCriacao.Location = new System.Drawing.Point(222, 59);
             this.txtDataCriacao.Name = "txtDataCriacao";
             this.txtDataCriacao.ReadOnly = true;
-            this.txtDataCriacao.Size = new System.Drawing.Size(86, 20);
+            this.txtDataCriacao.Size = new System.Drawing.Size(107, 20);
             this.txtDataCriacao.TabIndex = 2;
             this.txtDataCriacao.TabStop = false;
             // 
@@ -210,25 +214,51 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Data criação lista";
             // 
+            // btnRemover
+            // 
+            this.btnRemover.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemover.Location = new System.Drawing.Point(478, 95);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(62, 23);
+            this.btnRemover.TabIndex = 17;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = false;
+            this.btnRemover.Visible = false;
+            this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
+            // 
             // btnCriar
             // 
             this.btnCriar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCriar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCriar.Location = new System.Drawing.Point(314, 56);
+            this.btnCriar.Location = new System.Drawing.Point(335, 57);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(75, 23);
             this.btnCriar.TabIndex = 3;
-            this.btnCriar.TabStop = false;
             this.btnCriar.Text = "Criar";
             this.btnCriar.UseVisualStyleBackColor = false;
             this.btnCriar.Click += new System.EventHandler(this.BtnCriar_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(414, 81);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "(Enter)";
+            this.label6.Visible = false;
+            // 
             // FormLista
             // 
+            this.AcceptButton = this.btnAdicionar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(555, 369);
+            this.ControlBox = false;
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.txtDataCriacao);
             this.Controls.Add(this.label5);
@@ -273,6 +303,8 @@
         private System.Windows.Forms.DataGridView dgvListaChamada;
         private System.Windows.Forms.TextBox txtDataCriacao;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnCriar;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -29,7 +29,6 @@ namespace Lista_de_Chamadas
         {
             if (Editar)
             {
-
                 _ListaChamada = ModuloBanco.ListaChamadaGet(Id);
                 txtDataCriacao.Text = _ListaChamada.DataCriacao.ToString();
                 _Alunos = new BindingList<Aluno>();
@@ -38,7 +37,16 @@ namespace Lista_de_Chamadas
                     _Alunos.Add(ModuloBanco.AlunoGet(item));
                 }
                 dgvListaChamada.DataSource = _Alunos;
-                txtNomeLista.Focus();
+                txtRa.Focus();
+                txtRa.ReadOnly = false;
+                txtNome.ReadOnly = false;
+                txtNomeLista.Text = _ListaChamada.NomeLista;
+                txtNomeLista.ReadOnly = true;
+                txtNomeLista.TabStop = false;
+                btnCriar.Visible = false;
+                btnAdicionar.Visible = true;
+                btnRemover.Visible = true;
+                label6.Visible = true;
             }
             else
             {
@@ -71,6 +79,8 @@ namespace Lista_de_Chamadas
             txtNome.ReadOnly = false;
             btnAdicionar.Visible = true;
             txtNomeLista.TabStop = false;
+            btnRemover.Visible = true;
+            label6.Visible = true;
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
@@ -94,6 +104,7 @@ namespace Lista_de_Chamadas
                 return;
             }
             #endregion
+            this.UseWaitCursor = true;
             Aluno aluno = new Aluno()
             {
                 Nome = txtNome.Text,
@@ -103,10 +114,36 @@ namespace Lista_de_Chamadas
             {
                 if (item.RA == aluno.RA)
                 {
+                    this.UseWaitCursor = false;
                     MessageBox.Show("RA já adicionado na lista!");
                     return;
                 }
             }
+            Aluno nomeAlunoSalvo = ModuloBanco.AlunoGet(aluno.RA);
+            if (nomeAlunoSalvo != null)
+            {
+                string nomef = nomeAlunoSalvo.Nome;
+                if (aluno.Nome != nomef)
+                {
+                    this.UseWaitCursor = false;
+                    if (MessageBox.Show($"O nome: '{aluno.Nome}' é diferente de '{nomef}'. Deseja salvar mesmo assim?", "Atenção, o nome é diferente!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        this.UseWaitCursor = true;
+                        _Alunos.Add(aluno);
+                        _ListaChamada.ListaRA.Add(aluno.RA);
+                        ModuloBanco.AlunoAdd(aluno);
+                        ModuloBanco.ListaChamadaEdit(_ListaChamada.Id, _ListaChamada);
+                        txtNome.Clear();
+                        txtRa.Focus();
+                        txtRa.Clear();
+                        this.UseWaitCursor = false;
+                        return;
+                    }
+                    else
+                        return;
+                }
+            }
+
             _Alunos.Add(aluno);
             _ListaChamada.ListaRA.Add(aluno.RA);
             ModuloBanco.AlunoAdd(aluno);
@@ -114,6 +151,7 @@ namespace Lista_de_Chamadas
             txtNome.Clear();
             txtRa.Focus();
             txtRa.Clear();
+            this.UseWaitCursor = false;
         }
 
         public bool CheckTextBox(TextBox textBox)
@@ -177,17 +215,22 @@ namespace Lista_de_Chamadas
                     int selectedIndex = dgvListaChamada.CurrentCell.RowIndex;
                     if (selectedIndex > -1)
                     {
-                        ulong ra = (ulong)dgvListaChamada.Rows[selectedIndex].Cells[0].Value;
-                        foreach (var item in _Alunos)
+                        if (MessageBox.Show("Você tem certeza que deseja remover este aluno?", "Removendo..", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            if (item.RA == ra)
+                            ulong ra = (ulong)dgvListaChamada.Rows[selectedIndex].Cells[0].Value;
+                            foreach (var item in _Alunos)
                             {
-                                _Alunos.Remove(item);
-                                _ListaChamada.ListaRA.Remove(item.RA);
-                                ModuloBanco.ListaChamadaEdit(_ListaChamada.Id, _ListaChamada);
-                                break;
+                                if (item.RA == ra)
+                                {
+                                    _Alunos.Remove(item);
+                                    _ListaChamada.ListaRA.Remove(item.RA);
+                                    ModuloBanco.ListaChamadaEdit(_ListaChamada.Id, _ListaChamada);
+                                    break;
+                                }
                             }
                         }
+                        else
+                            return;
                     }
                 }
             }
@@ -218,6 +261,33 @@ namespace Lista_de_Chamadas
         private void TxtRa_Enter(object sender, EventArgs e)
         {
             txtRa.Clear();
+        }
+
+        private void BtnRemover_Click(object sender, EventArgs e)
+        {
+            if (dgvListaChamada.CurrentRow != null && dgvListaChamada.Rows.Count > 0)
+            {
+                int selectedIndex = dgvListaChamada.CurrentCell.RowIndex;
+                if (selectedIndex > -1)
+                {
+                    if (MessageBox.Show("Você tem certeza que deseja remover este aluno?", "Removendo..", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        ulong ra = (ulong)dgvListaChamada.Rows[selectedIndex].Cells[0].Value;
+                        foreach (var item in _Alunos)
+                        {
+                            if (item.RA == ra)
+                            {
+                                _Alunos.Remove(item);
+                                _ListaChamada.ListaRA.Remove(item.RA);
+                                ModuloBanco.ListaChamadaEdit(_ListaChamada.Id, _ListaChamada);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                        return;
+                }
+            }
         }
     }
 }

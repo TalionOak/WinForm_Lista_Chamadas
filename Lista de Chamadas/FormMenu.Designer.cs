@@ -35,6 +35,7 @@
             this.btnNova = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             this.btnFecharTudo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFecharTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFecharTudo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnFecharTudo.Location = new System.Drawing.Point(532, 2);
+            this.btnFecharTudo.Location = new System.Drawing.Point(532, 3);
             this.btnFecharTudo.Name = "btnFecharTudo";
             this.btnFecharTudo.Size = new System.Drawing.Size(21, 23);
             this.btnFecharTudo.TabIndex = 1;
@@ -70,7 +71,7 @@
             this.btnMinimar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnMinimar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnMinimar.Location = new System.Drawing.Point(505, 2);
+            this.btnMinimar.Location = new System.Drawing.Point(507, 3);
             this.btnMinimar.Name = "btnMinimar";
             this.btnMinimar.Size = new System.Drawing.Size(21, 23);
             this.btnMinimar.TabIndex = 2;
@@ -94,7 +95,7 @@
             // 
             this.btnNova.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnNova.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNova.Location = new System.Drawing.Point(96, 97);
+            this.btnNova.Location = new System.Drawing.Point(95, 86);
             this.btnNova.Name = "btnNova";
             this.btnNova.Size = new System.Drawing.Size(101, 23);
             this.btnNova.TabIndex = 8;
@@ -106,7 +107,7 @@
             // 
             this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEditar.Location = new System.Drawing.Point(96, 68);
+            this.btnEditar.Location = new System.Drawing.Point(95, 57);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(101, 23);
             this.btnEditar.TabIndex = 7;
@@ -118,7 +119,7 @@
             // 
             this.btnCalcular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCalcular.Location = new System.Drawing.Point(342, 82);
+            this.btnCalcular.Location = new System.Drawing.Point(349, 73);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(101, 23);
             this.btnCalcular.TabIndex = 5;
@@ -126,12 +127,22 @@
             this.btnCalcular.UseVisualStyleBackColor = false;
             this.btnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(2, 141);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(356, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Copyright Ailton Silva ®™  2019 - Infinito. Feita para a Prof. Simonia Fukue";
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(555, 159);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNova);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.btnEditar);
@@ -160,6 +171,7 @@
         private System.Windows.Forms.Button btnNova;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Label label2;
     }
 }
 

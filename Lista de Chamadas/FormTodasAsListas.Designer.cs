@@ -45,7 +45,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label1.Location = new System.Drawing.Point(12, 4);
+            this.label1.Location = new System.Drawing.Point(10, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 7;
@@ -56,7 +56,7 @@
             this.btnMinimar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnMinimar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnMinimar.Location = new System.Drawing.Point(335, 4);
+            this.btnMinimar.Location = new System.Drawing.Point(337, 4);
             this.btnMinimar.Name = "btnMinimar";
             this.btnMinimar.Size = new System.Drawing.Size(21, 23);
             this.btnMinimar.TabIndex = 6;
@@ -82,10 +82,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-170, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(555, 28);
+            this.pictureBox1.Size = new System.Drawing.Size(385, 28);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
@@ -107,6 +107,8 @@
             this.dgvListaChamada.AllowUserToDeleteRows = false;
             this.dgvListaChamada.AllowUserToResizeColumns = false;
             this.dgvListaChamada.AllowUserToResizeRows = false;
+            this.dgvListaChamada.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvListaChamada.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvListaChamada.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvListaChamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaChamada.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -130,19 +132,19 @@
             // 
             this.btnExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExcluir.Location = new System.Drawing.Point(262, 84);
+            this.btnExcluir.Location = new System.Drawing.Point(262, 82);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(101, 23);
             this.btnExcluir.TabIndex = 20;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_ClickAsync);
             // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEditar.Location = new System.Drawing.Point(262, 134);
+            this.btnEditar.Location = new System.Drawing.Point(262, 138);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(101, 23);
             this.btnEditar.TabIndex = 21;
